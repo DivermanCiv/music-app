@@ -1,0 +1,32 @@
+{
+  "cwd": "C:\\Users\\Adam\\Documents\\Campus Academy\\B3\\CrossPlatform\\newApp",
+  "type": [
+    "cordova"
+  ],
+  "name": "My App",
+  "framework": "core",
+  "template": "tabs",
+  "bundler": false,
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#007aff",
+    "darkTheme": true,
+    "iconFonts": true,
+    "fillBars": true
+  },
+  "customBuild": false,
+  "pkg": "io.framework7.myapp",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  }
+}
