@@ -11,7 +11,7 @@ var routes = [
     path: '/start/',
     url: './pages/start.html',
     on: {
-      pageInit: function(e, page) {
+      pageAfterIn: function(e, page) {
         var router = this;
         var app = router.app;
         var genresIdList = ["132", "116", "152"]
