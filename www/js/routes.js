@@ -9,6 +9,18 @@ var routes = [
     url: './pages/home.html',
   },
   {
+    path: '/start/',
+    url: './pages/start.html',
+    on: {
+      pageInit: function(e, page) {
+        var router = this;
+        var app = router.app;
+        var genresIdList = ["132", "116", "152"]
+        get_genres(genresIdList)
+      }
+    }
+  },
+  {
     path: '/play/',
     url: './pages/play.html',
   },
@@ -43,7 +55,7 @@ var routes = [
 
       // Simulate Ajax Request
       setTimeout(function () {
-        // We got user data from request  
+        // We got user data from request
         var user = {
           firstName: 'Vladimir',
           lastName: 'Kharlampidi',
@@ -86,10 +98,10 @@ var routes = [
 function get_recipe(recipeId) {
   app.request({
     url: "https://api.deezer.com" + recipeId, //URL de L'api
-    method: "GET", // Méthode 
+    method: "GET", // Méthode
     dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
     beforeSend: function () {
-      // Avant de récupérer mes datas, j'affiche un loader 
+      // Avant de récupérer mes datas, j'affiche un loader
       //(important quand on fait un traitement pour montrer qu'il est en cours +  empêcher les impatients de cliquer partout pendant le process !)
       app.dialog.preloader();
     },
