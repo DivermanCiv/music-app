@@ -1,4 +1,3 @@
-
 var routes = [
   {
     path: '/',
@@ -9,8 +8,16 @@ var routes = [
     url: './pages/home.html',
   },
   {
-    path: '/play/',
+    path: '/play/:id',
     url: './pages/play.html',
+    on: { // on ajoute l'évènement on pageAfterIn pour déclencher les script après l'initialisation de la page
+      pageAfterIn: function (e, page) {
+        var router = this;
+        var app = router.app; // important pour utiliser les components dans les routes
+        var genreId = page.route.params.id; // function que j'ai créee dans un fichier index.js
+        get_4_artists_by_genreId(genreId);
+      },
+    }
   },
   {
     path: '/about/',
@@ -83,28 +90,3 @@ var routes = [
   },
 ];
 
-function get_recipe(recipeId) {
-  app.request({
-    url: "https://api.deezer.com" + recipeId, //URL de L'api
-    method: "GET", // Méthode 
-    dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
-    beforeSend: function () {
-      // Avant de récupérer mes datas, j'affiche un loader 
-      //(important quand on fait un traitement pour montrer qu'il est en cours +  empêcher les impatients de cliquer partout pendant le process !)
-      app.dialog.preloader();
-    },
-    success: function (res) {
-      // res correspond à la réponse
-      console.log(res);
-      console.log(res.meals);
-      //Traitement des datas
-      for (let index = 0; index < res.meals.length; index++) {
-        let meal = res.meals[index];
-        $$(".recipe__title").html(meal.strMeal);
-        $$(".recipe__description").html(meal.strInstructions);
-      }
-      // Je ferme le loader
-      app.dialog.close();
-    },
-  });
-}

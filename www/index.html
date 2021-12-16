@@ -46,22 +46,6 @@
 
     <!-- Views/Tabs container -->
     <div class="views tabs safe-areas">
-      <!-- Tabbar for switching views-tabs -->
-      <div class="toolbar toolbar-bottom tabbar-labels">
-        <div class="toolbar-inner">
-          <a href="#view-home" class="tab-link tab-link-active">
-            <i class="icon f7-icons if-not-md">music_note_2</i>
-            <i class="icon material-icons if-md">home</i>
-            <span class="tabbar-label">Home</span>
-          </a>
-          <a href="#view-play" class="tab-link">
-            <i class="icon f7-icons if-not-md">music_note_1</i>
-            <i class="icon material-icons if-md">view_play</i>
-            <span class="tabbar-label">Play</span>
-          </a>
-
-        </div>
-      </div>
 
       <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
       <div id="view-home" class="view view-main view-init tab tab-active" data-url="/home/"></div>
@@ -76,7 +60,8 @@
   <script src="framework7/framework7-bundle.min.js"></script>
   <!-- Cordova APIs -->
   <script src="js/cordova-app.js"></script>
-
+  <!-- App functions -->
+  <script src="js/index.js"></script>
   <!-- App routes -->
   <script src="js/routes.js"></script>
   <!-- App store -->

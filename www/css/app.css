@@ -58,4 +58,27 @@
   --f7-navbar-large-title-text-color: #fff;
 }
 
+.margin-top-60{
+  margin-top: 60px;
+}
+
+.margin-60{
+  margin: 60px;
+}
+
+.question{
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.Row{
+  border: red 2px solid;
+  background-color: rgba(255, 132, 132, 0.705);
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+
 /* Your app custom styles here */
