@@ -1,5 +1,5 @@
 var $ = Dom7;
-
+let tab = [] 
 var device = Framework7.getDevice();
 var app = new Framework7({
   name: 'My App', // App name
