@@ -8,6 +8,18 @@ var routes = [
     url: './pages/home.html',
   },
   {
+    path: '/start/',
+    url: './pages/start.html',
+    on: {
+      pageInit: function(e, page) {
+        var router = this;
+        var app = router.app;
+        var genresIdList = ["132", "116", "152"]
+        get_genres(genresIdList)
+      }
+    }
+  },
+  {
     path: '/play/:id',
     url: './pages/play.html',
     on: { // on ajoute l'évènement on pageAfterIn pour déclencher les script après l'initialisation de la page
@@ -50,7 +62,7 @@ var routes = [
 
       // Simulate Ajax Request
       setTimeout(function () {
-        // We got user data from request  
+        // We got user data from request
         var user = {
           firstName: 'Vladimir',
           lastName: 'Kharlampidi',
@@ -89,4 +101,3 @@ var routes = [
     url: './pages/404.html',
   },
 ];
-
