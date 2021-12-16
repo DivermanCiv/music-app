@@ -16,11 +16,11 @@
   <meta name="theme-color" content="#007aff">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>My App</title>
-  
-  
-  
-  
+  <title>MusicQuizz App</title>
+
+
+
+
   <link rel="stylesheet" href="framework7/framework7-bundle.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
@@ -43,42 +43,32 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Views/Tabs container -->
     <div class="views tabs safe-areas">
       <!-- Tabbar for switching views-tabs -->
       <div class="toolbar toolbar-bottom tabbar-labels">
         <div class="toolbar-inner">
           <a href="#view-home" class="tab-link tab-link-active">
-            <i class="icon f7-icons if-not-md">house_fill</i>
+            <i class="icon f7-icons if-not-md">music_note_2</i>
             <i class="icon material-icons if-md">home</i>
             <span class="tabbar-label">Home</span>
           </a>
-          <a href="#view-catalog" class="tab-link">
-            <i class="icon f7-icons if-not-md">square_list_fill</i>
-            <i class="icon material-icons if-md">view_list</i>
-            <span class="tabbar-label">Catalog</span>
+          <a href="#view-play" class="tab-link">
+            <i class="icon f7-icons if-not-md">music_note_1</i>
+            <i class="icon material-icons if-md">view_play</i>
+            <span class="tabbar-label">Play</span>
           </a>
-          <a href="#view-settings" class="tab-link">
-            <i class="icon f7-icons if-not-md">gear</i>
-            <i class="icon material-icons if-md">settings</i>
-            <span class="tabbar-label">Settings</span>
-          </a>
+
         </div>
       </div>
 
       <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
       <div id="view-home" class="view view-main view-init tab tab-active" data-url="/home/"></div>
 
-      <!-- Catalog View -->
-      <div id="view-catalog" class="view view-init tab" data-name="catalog" data-url="/catalog/">
-        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
-      </div>
+      <div id="view-play" class="view view-init tab" data-url="/play/"></div>
 
-      <!-- Settings View -->
-      <div id="view-settings" class="view view-init tab" data-name="settings" data-url="/settings/">
-        <!-- Settings page will be loaded here dynamically from /settings/ route -->
-      </div>
+
     </div>
   </div>
   <!-- CORDOVA_PLACEHOLDER_DONT_REMOVE -->
@@ -86,7 +76,7 @@
   <script src="framework7/framework7-bundle.min.js"></script>
   <!-- Cordova APIs -->
   <script src="js/cordova-app.js"></script>
-  
+
   <!-- App routes -->
   <script src="js/routes.js"></script>
   <!-- App store -->

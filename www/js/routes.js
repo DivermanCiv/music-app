@@ -9,20 +9,16 @@ var routes = [
     url: './pages/home.html',
   },
   {
+    path: '/play/',
+    url: './pages/play.html',
+  },
+  {
     path: '/about/',
     url: './pages/about.html',
   },
   {
     path: '/form/',
     url: './pages/form.html',
-  },
-  {
-    path: '/catalog/',
-    componentUrl: './pages/catalog.html',
-  },
-  {
-    path: '/product/:id/',
-    componentUrl: './pages/product.html',
   },
   {
     path: '/settings/',
