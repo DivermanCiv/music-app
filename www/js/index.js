@@ -1,7 +1,7 @@
 function get_4_artists_by_genreId(genreId) {
 
     app.request({
-      url: "https://www.proxyscan.io/api/proxy?format=json/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
+      url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
       method: "GET", // Méthode
       crossDomain: true,
       dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
@@ -38,7 +38,7 @@ function get_4_artists_by_genreId(genreId) {
 async function get_tracklist_by_artist(artistId){
 
     let result = await app.request({
-        url: "https://www.proxyscan.io/api/proxy?format=json/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
+        url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
         method: "GET", // Méthode
         crossDomain: true,
         dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
