@@ -1,4 +1,4 @@
-function get_genres(genresIdList){
+function get_genres(){
   app.request({
     url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/genre",
     method: "GET",
@@ -9,18 +9,15 @@ function get_genres(genresIdList){
     success: function(res) {
       var elementFound = 0
       for(let index = 0; index < res.data.length; index++){
-        var found = genresIdList.find(function(element){
-          if (element == res.data[index].id){
 
             $('.genre__selection').append(`
-              <div class="col-50">
+              <div class="col-50 padding">
                 <a href="/play/${res.data[index].id}">
-                  <img src="${res.data[index].picture_medium}">
+                  <img class="plain border-radius-10" src="${res.data[index].picture_medium}">
                 </a>
-                <div class="Row text-align-center">${res.data[index].name}</div>
-              </div>`)
-          }
-        })
+                <div class="h2 text-align-center">${res.data[index].name}</div>
+              </div>
+            `)
       }
       app.dialog.close();
     }

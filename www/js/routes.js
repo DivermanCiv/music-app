@@ -14,8 +14,7 @@ var routes = [
       pageAfterIn: function(e, page) {
         var router = this;
         var app = router.app;
-        var genresIdList = ["132", "116", "152"]
-        get_genres(genresIdList)
+        get_genres()
       }
     }
   },
