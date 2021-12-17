@@ -1,10 +1,12 @@
+
+
 function get_4_artists_by_genreId(genreId) {
 
     app.request({
       url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
       method: "GET", // Méthode
       crossDomain: true,
-      dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
+      dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
       beforeSend: function () {
         // Avant de récupérer mes datas, j'affiche un loader
         //(important quand on fait un traitement pour montrer qu'il est en cours +  empêcher les impatients de cliquer partout pendant le process !)
@@ -14,8 +16,9 @@ function get_4_artists_by_genreId(genreId) {
 
         for (let index = 0; index < 4; index++) {
 
-            console.log(res[index]);
-            let tracklist = await get_tracklist_by_artist(res[index].id)
+
+            console.log(res.data[index].id);
+            let tracklist = await get_tracklist_by_artist(res.data[index].id)
 
             $('.answer-container').append(`
             <div class="Row margin-60 padding">
@@ -41,12 +44,12 @@ async function get_tracklist_by_artist(artistId){
         url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
         method: "GET", // Méthode
         crossDomain: true,
-        dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
+        dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
         success: function (res) {
 
-            let index = Math.floor(Math.random() * res.length);
+            let index = Math.floor(Math.random() * res.data.length);
 
-            return res[index];
+            return res.data[index];
 
         },
         error: function(res){
