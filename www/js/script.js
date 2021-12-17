@@ -7,16 +7,17 @@ function get_genres(genresIdList){
       app.dialog.preloader('Chargement', 'blue');
     },
     success: function(res) {
-      var genresNames = [];
-      var genresImages = [];
+      console.log(res)
       for(let index = 0; index < res.data.length; index++){
         var found = genresIdList.find(function(element){
           if (element == res.data[index].id){
             $('.genre__selection').append(`
-            <div class="Row padding">
-                <img class="Row padding" src="${res.data[index].picture_medium}"/>
+              <div class="col-50 padding">
+                <a href="/play/${res.data[index].id}">
+                  <img class="padding" src="${res.data[index].picture_small}">
+                </a>
                 <div class="Row text-align-center answer">${res.data[index].name}</div>
-            </div>`)
+              </div>`)
           }
         })
       }
