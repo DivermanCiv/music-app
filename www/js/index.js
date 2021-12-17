@@ -14,21 +14,32 @@ function get_4_artists_by_genreId(genreId) {
         var randomArtists = []
         while (randomArtists.length < 4){
           var newArtist = (Math.floor(Math.random() * res.data.length))
-          randomArtists.push(newArtist)
+          var found = 0
+          for(index=0; index<randomArtists.length; index++){
+            if(newArtist == randomArtists[index]){
+              found++
+            }
+          }
+          if (found === 0){
+            randomArtists.push(newArtist)
+          }
         }
-
+        var goodAnswer = (Math.floor(Math.random() * randomArtists.length))
+        console.log(goodAnswer)
         for (let index = 0; index < randomArtists.length; index++) {
-
             let tracklist = await get_tracklist_by_artist(res.data[randomArtists[index]].id)
+            console.log(tracklist)
+            if (index == goodAnswer){
+              var answerType = "good"
+              $('.music').append(`
+                  <source src="${tracklist.data.data[index].preview}" type="audio/mpeg">
+              `)
+            } else { var answerType = "wrong" }
 
             $('.answer-container').append(`
             <div class="Row margin-60 padding">
-                <div class="Col text-align-center answer">${tracklist.data.data[index].title_short} - ${tracklist.data.data[index].artist.name}</div>
+                <div class="Col text-align-center answer ${answerType}">${tracklist.data.data[index].title} - ${tracklist.data.data[index].artist.name}</div>
             </div>
-            `)
-
-            $('.music').append(`
-                <source src="${tracklist.data.data[2].preview}" type="audio/mpeg">
             `)
         }
 
@@ -47,23 +58,22 @@ function get_4_artists_by_genreId(genreId) {
 
 async function get_tracklist_by_artist(artistId){
 
-    let result = await app.request({
+    let response = await app.request({
         url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
         method: "GET", // Méthode
         crossDomain: true,
         dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
         success: function (res) {
+          let index = Math.floor(Math.random() * res.data.length);
 
-            let index = Math.floor(Math.random() * res.data.length);
+          let result = res.data[index];
 
-            let result = res.data[index];
-
-            return result;
-
+          return result
         },
         error: function(res){
           console.log(res)
         }
     })
-    return result;
+
+    return response;
 }
