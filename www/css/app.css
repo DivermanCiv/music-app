@@ -66,6 +66,30 @@
   margin: 60px;
 }
 
+@font-face {
+  font-family: balsamiq;
+  src: url(../fonts/BalsamiqSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: sunny-spell;
+  src: url(../fonts/SunnyspellsRegular-MV9ze.otf);
+}
+
+.game-title{
+  font-family: sunny-spell;
+  font-size: 72px;
+  text-align: center;
+  color: crimson;
+  margin-top: 100px;
+}
+
+.game-sub-title{
+  font-family: balsamiq;
+  font-size: 20px;
+  text-align: center;
+}
+
 .question{
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -86,9 +110,22 @@
   height: 100%;
 }
 
+.width-80{
+  width: 80%;
+  margin: 10%;
+}
+
 .border-radius-10{
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+.border-radius-round{
+  border-radius: 100%;
+}
+
+.icone{
+  box-shadow: 0px 10px 20000px 50px blue;
 }
 
 /* Your app custom styles here */
