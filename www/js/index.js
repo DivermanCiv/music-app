@@ -1,10 +1,12 @@
+
+
 function get_4_artists_by_genreId(genreId) {
 
     app.request({
-      url: "https://www.proxyscan.io/api/proxy?format=json/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
+      url: "https://cors-anywhere.herokuapp.com/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
       method: "GET", // Méthode
       crossDomain: true,
-      dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
+      dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
       beforeSend: function () {
         // Avant de récupérer mes datas, j'affiche un loader
         //(important quand on fait un traitement pour montrer qu'il est en cours +  empêcher les impatients de cliquer partout pendant le process !)
@@ -13,9 +15,10 @@ function get_4_artists_by_genreId(genreId) {
       success: async function (res) {
 
         for (let index = 0; index < 4; index++) {
-
-            console.log(res[index]);
-            let tracklist = await get_tracklist_by_artist(res[index].id)
+            
+            
+            console.log(res.data[index].id);
+            let tracklist = await get_tracklist_by_artist(res.data[index].id)
 
             $('.answer-container').append(`
             <div class="Row margin-60 padding">
@@ -38,15 +41,15 @@ function get_4_artists_by_genreId(genreId) {
 async function get_tracklist_by_artist(artistId){
 
     let result = await app.request({
-        url: "https://www.proxyscan.io/api/proxy?format=json/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
-        method: "GET", // Méthode
+        url: "https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
+        method: "GET", // Méthode 
         crossDomain: true,
-        dataType: "jsonp", // Important, sinon vous allez récupérer un string et non un objet
+        dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
         success: function (res) {
+            
+            let index = Math.floor(Math.random() * res.data.length);
 
-            let index = Math.floor(Math.random() * res.length);
-
-            return res[index];
+            return res.data[index];
 
         },
         error: function(res){
