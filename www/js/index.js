@@ -11,20 +11,25 @@ function get_4_artists_by_genreId(genreId) {
         app.dialog.preloader();
       },
       success: async function (res) {
+        var randomArtists = []
+        while (randomArtists.length < 4){
+          var newArtist = (Math.floor(Math.random() * res.data.length))
+          randomArtists.push(newArtist)
+        }
 
-        for (let index = 0; index < 4; index++) {
-            
-            let tracklist = await get_tracklist_by_artist(res.data[index].id)
+        for (let index = 0; index < randomArtists.length; index++) {
+
+            let tracklist = await get_tracklist_by_artist(res.data[randomArtists[index]].id)
 
             $('.answer-container').append(`
             <div class="Row margin-60 padding">
-                <div class="Col text-align-center answer">${tracklist.data.data[index].title}</div>
+                <div class="Col text-align-center answer">${tracklist.data.data[index].title_short} - ${tracklist.data.data[index].artist.name}</div>
             </div>
             `)
 
-            // $('.music').append(`
-            //     <source src="${tracklist.data.data[2].link}" type="audio/mpeg">
-            // `)
+            $('.music').append(`
+                <source src="${tracklist.data.data[2].preview}" type="audio/mpeg">
+            `)
         }
 
 
@@ -44,7 +49,7 @@ async function get_tracklist_by_artist(artistId){
 
     let result = await app.request({
         url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/artist/" + artistId + "/top", //URL de L'api
-        method: "GET", // Méthode 
+        method: "GET", // Méthode
         crossDomain: true,
         dataType: "json", // Important, sinon vous allez récupérer un string et non un objet
         success: function (res) {
