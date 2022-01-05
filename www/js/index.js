@@ -56,6 +56,7 @@ function get_4_artists_by_genreId(genreId, round) {
             randomArtists.push(newArtist)
           }
         }
+
         var goodAnswer = (Math.floor(Math.random() * randomArtists.length))
         for (let index = 0; index < randomArtists.length; index++) {
             let tracklist = await get_tracklist_by_artist(res.data[randomArtists[index]].id)
@@ -66,6 +67,11 @@ function get_4_artists_by_genreId(genreId, round) {
               `)
 
               let music = document.querySelector(".music")
+              let timer = document.getElementById("timer")
+              timer.textContent = music.currentTime
+              if(music.ontimeupdate == 0){
+                nextQuestion(genreId)
+              }
               music.load()
             } else { var answerType = "wrongAnswer" }
 
