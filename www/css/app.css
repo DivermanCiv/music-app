@@ -65,7 +65,7 @@
 }
 
 .margin-60{
-  margin: 60px;
+  margin: 10vw;
 }
 
 @font-face {
@@ -80,20 +80,20 @@
 
 .game-title{
   font-family: sunny-spell;
-  font-size: 72px;
+  font-size: 22vw;
   text-align: center;
   color: crimson;
-  margin-top: 100px;
+  margin-top: 10vw;
 }
 
 .game-sub-title{
   font-family: balsamiq;
-  font-size: 20px;
+  font-size: 6vw;
   text-align: center;
 }
 
 .question{
-  font-size: large;
+  font-size: 3vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   margin-top: 60px;
@@ -128,25 +128,26 @@
 
 .icone{
   box-shadow: 0px 10px 20000px 50px blue;
+  margin-bottom: 10vw;
 }
 
 .navbar-inner{
   background-color: black;
   font-family: balsamiq;
-  font-size: xx-large;
+  font-size: 5vh;
   padding-top: 10px;
+  margin: auto;
 }
 
 .choose{
   text-align: center;
-  margin: 30px;
-  font-size: auto;
+  margin: 5vw;
+  font-size: 3vh;
 }
 
 .timer{
-  margin: -50px auto 0;
+  margin: 0 40%;
   text-align: center;
-  width: 100px;
   font-size: 10vh;
   color: white;
 }
@@ -167,4 +168,14 @@
   border: white solid 1px;
   padding: 20px;
   font-size: 3vh;
+}
+
+.answer-container{
+  width: 100%;
+  max-height: 70%;
+}
+
+.page{
+  height: 100%;
+  overflow-x: scroll;
 }
