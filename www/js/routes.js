@@ -21,11 +21,11 @@ var routes = [
   {
     path: '/play/:id',
     url: './pages/play.html',
-    on: { // on ajoute l'évènement on pageAfterIn pour déclencher les script après l'initialisation de la page
+    on: {
       pageAfterIn: function (e, page) {
         var router = this;
-        var app = router.app; // important pour utiliser les components dans les routes
-        var genreId = page.route.params.id; // function que j'ai créee dans un fichier index.js
+        var app = router.app;
+        var genreId = page.route.params.id;
         var round = 0;
 
         get_4_artists_by_genreId(genreId, round);
@@ -33,8 +33,17 @@ var routes = [
     }
   },
   {
-    path: '/result/',
+    path: '/result/:score',
     url: './pages/result.html',
+    on: {
+      pageAfterIn: function (e, page) {
+        var router = this;
+        var app = router.app;
+        var score = page.route.params.score;
+
+        get_score(score)
+      }
+    }
   },
   {
     path: '/about/',
