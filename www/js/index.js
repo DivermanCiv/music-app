@@ -29,6 +29,7 @@ function get_4_artists_by_genreId(genreId, round) {
     round++
     if(round > 2){
       var score = calculateResult(results)
+      results = []
       return app.views.main.router.navigate(`/result/${score}`)
     }
     app.request({
@@ -157,8 +158,6 @@ function nextQuestion(genreId, round){
 
   get_4_artists_by_genreId(genreId, round)
 }
-
-results = []
 
 function addResult(timer){
   result = 30000 - timer * 1000

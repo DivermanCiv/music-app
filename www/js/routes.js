@@ -28,6 +28,8 @@ var routes = [
         var genreId = page.route.params.id;
         var round = 0;
 
+        results = []
+
         get_4_artists_by_genreId(genreId, round);
       },
     }
