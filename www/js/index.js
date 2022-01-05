@@ -22,7 +22,7 @@ function get_genres(){
       app.dialog.close();
     }
   })
-}
+};
 
 
 function get_4_artists_by_genreId(genreId) {
@@ -52,16 +52,14 @@ function get_4_artists_by_genreId(genreId) {
           }
         }
         var goodAnswer = (Math.floor(Math.random() * randomArtists.length))
-        console.log(goodAnswer)
         for (let index = 0; index < randomArtists.length; index++) {
             let tracklist = await get_tracklist_by_artist(res.data[randomArtists[index]].id)
-            console.log(tracklist)
             if (index == goodAnswer){
-              var answerType = "good"
+              var answerType = "goodAnswer"
               $('.music').append(`
                   <source src="${tracklist.data.data[index].preview}" type="audio/mpeg">
               `)
-            } else { var answerType = "wrong" }
+            } else { var answerType = "wrongAnswer" }
 
             $('.answer-container').append(`
             <div class="Row margin-60 padding">
@@ -70,7 +68,7 @@ function get_4_artists_by_genreId(genreId) {
             `)
         }
 
-
+        checkAnswer();
 
         app.dialog.close();
 
@@ -103,4 +101,26 @@ async function get_tracklist_by_artist(artistId){
     })
 
     return response;
+}
+
+function checkAnswer(){
+  var answers = document.getElementsByClassName("answer")
+
+  for(var i=0; i<answers.length; i++){
+    answers[i].addEventListener("click", function(){
+      if(this.classList.contains("goodAnswer")) {
+        goodAnswer()
+      } else {
+        wrongAnswer()
+      }
+    })
+  }
+}
+
+function goodAnswer(){
+  console.log('bravo')
+}
+
+function wrongAnswer(){
+  console.log('wrong')
 }
