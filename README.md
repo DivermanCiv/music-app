@@ -1,102 +1,13 @@
-# My App
+# MusicQuizz
 
-## Framework7 CLI Options
+This app is a blindtest using the Deezer API to generate the music.
 
-Framework7 app created with following options:
+## Start
 
-```
-{
-  "cwd": "C:\\Users\\Adam\\Documents\\Campus Academy\\B3\\CrossPlatform\\newApp",
-  "type": [
-    "cordova"
-  ],
-  "name": "My App",
-  "framework": "core",
-  "template": "tabs",
-  "bundler": false,
-  "cssPreProcessor": false,
-  "theming": {
-    "customColor": true,
-    "color": "#007aff",
-    "darkTheme": true,
-    "iconFonts": true,
-    "fillBars": true
-  },
-  "customBuild": false,
-  "pkg": "io.framework7.myapp",
-  "cordova": {
-    "folder": "cordova",
-    "platforms": [
-      "android",
-      "ios"
-    ],
-    "plugins": [
-      "cordova-plugin-statusbar",
-      "cordova-plugin-keyboard",
-      "cordova-plugin-splashscreen"
-    ]
-  }
-}
-```
+Click on the home screen to go to the genre selection screen. You choose a music genre among those proposed.
 
-## Install Dependencies
+## Play
 
-First of all we need to install dependencies, run in terminal
-```
-npm install
-```
-
-## NPM Scripts
-
-* 🔥 `start` - run development server
-* 🔧 `serve` - run development server
-* 📱 `build-cordova` - build cordova app
-* 📱 `build-cordova-ios` - build cordova iOS app
-* 📱 `cordova-ios` - run cordova iOS app
-* 📱 `build-cordova-android` - build cordova Android app
-* 📱 `cordova-android` - run cordova Android app
-## Cordova
-
-Cordova project located in `cordova` folder. You shouldn't modify content of `cordova/www` folder. Its content will be correctly generated when you call `npm run cordova-build-prod`.
-
-
-
-
-
-## Assets
-
-Assets (icons, splash screens) source images located in `assets-src` folder. To generate your own icons and splash screen images, you will need to replace all assets in this directory with your own images (pay attention to image size and format), and run the following command in the project directory:
-
-```
-framework7 assets
-```
-
-Or launch UI where you will be able to change icons and splash screens:
-
-```
-framework7 assets --ui
-```
-
-
-
-## Documentation & Resources
-
-* [Framework7 Core Documentation](https://framework7.io/docs/)
-
-
-
-* [Framework7 Icons Reference](https://framework7.io/icons/)
-* [Community Forum](https://forum.framework7.io)
-
-## Support Framework7
-
-Love Framework7? Support project by donating or pledging on:
-- Patreon: https://patreon.com/framework7
-- OpenCollective: https://opencollective.com/framework7
-
-
-## API Deezer
-
-Application ID : 518522
-Application Name : MusicQuizz App
-Secret Key : 96bd1e6c0c56973fb55765f311244ccd
+A 30sec track begins to play and 4 choices are proposed. Select your answer and if you guess right, an amount of points depending of the time you took to find the answer will be awarded. If your answer is wrong, you don't win any points.
+After 10 tracks, the result screen will show you your final score.
+Do your best ! 
