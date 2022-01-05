@@ -26,15 +26,6 @@ function get_genres(){
 
 
 function get_4_artists_by_genreId(genreId, round) {
-    round++
-    if (round> 1){
-      app.dialog.close()
-    }
-    if(round > 10){
-      var score = calculateResult(results)
-      results = []
-      return app.views.main.router.navigate(`/result/${score}`)
-    }
     app.request({
       url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
       method: "GET", // Méthode
@@ -154,6 +145,15 @@ function nextQuestion(genreId, round){
   $('.music').empty();
 
   $('.answer-container').empty();
+
+  app.dialog.close()
+
+  if(round === 10){
+    var score = calculateResult(results)
+    results = []
+    return app.views.main.router.navigate(`/result/${score}`)
+  }
+  round++
 
   get_4_artists_by_genreId(genreId, round)
 }

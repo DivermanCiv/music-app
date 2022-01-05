@@ -26,7 +26,7 @@ var routes = [
         var router = this;
         var app = router.app;
         var genreId = page.route.params.id;
-        var round = 0;
+        var round = 1;
 
         results = []
 
