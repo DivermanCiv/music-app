@@ -25,8 +25,11 @@ function get_genres(){
 };
 
 
-function get_4_artists_by_genreId(genreId) {
-
+function get_4_artists_by_genreId(genreId, round) {
+    round++
+    if(round > 2){
+       return app.views.main.router.navigate('/result/')
+    }
     app.request({
       url: "https://infinite-fortress-56625.herokuapp.com/https://api.deezer.com/genre/" + genreId + "/artists", //URL de L'api
       method: "GET", // Méthode
@@ -71,7 +74,7 @@ function get_4_artists_by_genreId(genreId) {
             `)
         }
 
-        checkAnswer(genreId);
+        checkAnswer(genreId, round);
 
         app.dialog.close();
 
@@ -106,7 +109,7 @@ async function get_tracklist_by_artist(artistId){
     return response;
 }
 
-function checkAnswer(genreId){
+function checkAnswer(genreId, round){
   var answers = document.getElementsByClassName("answer")
 
   for(var i=0; i<answers.length; i++){
@@ -119,7 +122,7 @@ function checkAnswer(genreId){
         wrongAnswer()
       }
 
-      nextQuestion(genreId)
+      nextQuestion(genreId, round)
     })
   }
 }
@@ -132,7 +135,7 @@ function wrongAnswer(){
   console.log('wrong')
 }
 
-function nextQuestion(genreId){
+function nextQuestion(genreId, round){
   let music = document.querySelector(".music")
 
   music.pause()
@@ -142,7 +145,7 @@ function nextQuestion(genreId){
 
   $('.answer-container').empty();
 
-  get_4_artists_by_genreId(genreId)
+  get_4_artists_by_genreId(genreId, round)
 }
 
 results = []
