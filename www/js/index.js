@@ -59,6 +59,9 @@ function get_4_artists_by_genreId(genreId) {
               $('.music').append(`
                   <source src="${tracklist.data.data[index].preview}" type="audio/mpeg">
               `)
+
+              let music = document.querySelector(".music")
+              music.load()
             } else { var answerType = "wrongAnswer" }
 
             $('.answer-container').append(`
@@ -68,7 +71,7 @@ function get_4_artists_by_genreId(genreId) {
             `)
         }
 
-        checkAnswer();
+        checkAnswer(genreId);
 
         app.dialog.close();
 
@@ -103,7 +106,7 @@ async function get_tracklist_by_artist(artistId){
     return response;
 }
 
-function checkAnswer(){
+function checkAnswer(genreId){
   var answers = document.getElementsByClassName("answer")
 
   for(var i=0; i<answers.length; i++){
@@ -113,6 +116,8 @@ function checkAnswer(){
       } else {
         wrongAnswer()
       }
+
+      nextQuestion(genreId)
     })
   }
 }
@@ -123,4 +128,17 @@ function goodAnswer(){
 
 function wrongAnswer(){
   console.log('wrong')
+}
+
+function nextQuestion(genreId){
+  let music = document.querySelector(".music")
+
+  music.pause()
+  music.currentTime = 0;
+
+  $('.music').empty();
+
+  $('.answer-container').empty();
+
+  get_4_artists_by_genreId(genreId)
 }
