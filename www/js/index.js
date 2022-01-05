@@ -113,6 +113,8 @@ function checkAnswer(genreId){
     answers[i].addEventListener("click", function(){
       if(this.classList.contains("goodAnswer")) {
         goodAnswer()
+        let music = document.querySelector(".music")
+        addResult(music.currentTime)
       } else {
         wrongAnswer()
       }
@@ -141,4 +143,20 @@ function nextQuestion(genreId){
   $('.answer-container').empty();
 
   get_4_artists_by_genreId(genreId)
+}
+
+results = []
+
+function addResult(timer){
+  result = 30000 - timer * 1000
+  result = Math.round(result)
+  results.push(result)
+  console.log(results)
+}
+
+function calculateResult(results){
+  results.forEach(element => {
+    finalResult += element
+  });
+  return finalResult
 }

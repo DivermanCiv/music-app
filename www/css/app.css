@@ -142,3 +142,10 @@
   margin: 30px;
   font-size: large;
 }
+
+.timer{
+  height: 30px;
+  text-align: center;
+  width: 100px;
+  color: white;
+}
