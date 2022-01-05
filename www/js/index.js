@@ -82,7 +82,7 @@ function get_4_artists_by_genreId(genreId, round) {
         }
 
         var countdown = setTimeout(nextQuestion, 30000, genreId, round)
-        
+
         checkAnswer(genreId, round, countdown);
 
 
@@ -172,6 +172,7 @@ function calculateResult(results){
   results.forEach(element => {
     finalResult += element
   });
+  results = []
   return finalResult
 }
 
