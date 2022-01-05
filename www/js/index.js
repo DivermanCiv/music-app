@@ -119,7 +119,6 @@ async function get_tracklist_by_artist(artistId){
 
 function checkAnswer(genreId, round){
   var answers = document.getElementsByClassName("answer")
-
   for(var i=0; i<answers.length; i++){
     answers[i].addEventListener("click", function(){
       if(this.classList.contains("goodAnswer")) {
@@ -175,4 +174,5 @@ function calculateResult(results){
 
 function get_score(score){
     $('#score').append(`${score}`)
+
 }

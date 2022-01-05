@@ -150,3 +150,21 @@
   font-size: 10vh;
   color: white;
 }
+
+.score{
+  font-size: 10vh;
+  font-family: balsamiq;
+  text-align: center;
+}
+
+.messageend{
+  font-size: 7vh;
+  text-align: center;
+}
+
+.returnMenu{
+  border-radius: 10px;
+  border: white solid 1px;
+  padding: 20px;
+  font-size: 3vh;
+}
