@@ -124,7 +124,7 @@ function checkAnswer(genreId, round){
         wrongAnswer()
       }
 
-      nextQuestion(genreId, round)
+      setTimeout(nextQuestion, 2000, genreId, round)
     })
   }
 }
