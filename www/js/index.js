@@ -30,7 +30,7 @@ function get_4_artists_by_genreId(genreId, round) {
     if (round> 1){
       app.dialog.close()
     }
-    if(round > 2){
+    if(round > 10){
       var score = calculateResult(results)
       results = []
       return app.views.main.router.navigate(`/result/${score}`)
@@ -131,11 +131,11 @@ function checkAnswer(genreId, round, countdown){
     answers[i].addEventListener("click", function(){
       clearTimeout(countdown)
       if(this.classList.contains("goodAnswer")) {
-        app.dialog.alert('', 'Bien joué !')
+        app.dialog.progress('<p style="color:green">Bien joué !</p>', round*10, 'blue')
         let music = document.querySelector(".music")
         addResult(music.currentTime)
       } else {
-        app.dialog.alert('', 'Mauvaise réponse !')
+        app.dialog.progress('<p style="color:red">Mauvaise réponse !</p>', round*10, 'blue')
       }
 
       setTimeout(nextQuestion, 2000, genreId, round)
