@@ -29,7 +29,6 @@ function get_4_artists_by_genreId(genreId, round) {
     round++
     if(round > 2){
       var score = calculateResult(results)
-      console.log(score)
       return app.views.main.router.navigate(`/result/${score}`)
     }
     app.request({
@@ -82,7 +81,10 @@ function get_4_artists_by_genreId(genreId, round) {
             `)
         }
 
-        checkAnswer(genreId, round);
+        var countdown = setTimeout(nextQuestion, 30000, genreId, round)
+
+        checkAnswer(genreId, round, countdown);
+
 
         app.dialog.close();
 
@@ -117,10 +119,11 @@ async function get_tracklist_by_artist(artistId){
     return response;
 }
 
-function checkAnswer(genreId, round){
+function checkAnswer(genreId, round, countdown){
   var answers = document.getElementsByClassName("answer")
   for(var i=0; i<answers.length; i++){
     answers[i].addEventListener("click", function(){
+      clearTimeout(countdown)
       if(this.classList.contains("goodAnswer")) {
         goodAnswer()
         let music = document.querySelector(".music")
@@ -128,7 +131,6 @@ function checkAnswer(genreId, round){
       } else {
         wrongAnswer()
       }
-
       setTimeout(nextQuestion, 2000, genreId, round)
     })
   }
@@ -143,6 +145,7 @@ function wrongAnswer(){
 }
 
 function nextQuestion(genreId, round){
+
   let music = document.querySelector(".music")
 
   music.pause()
@@ -161,7 +164,6 @@ function addResult(timer){
   result = 30000 - timer * 1000
   result = Math.round(result)
   results.push(result)
-  console.log(results)
 }
 
 function calculateResult(results){
@@ -169,6 +171,7 @@ function calculateResult(results){
   results.forEach(element => {
     finalResult += element
   });
+  results = []
   return finalResult
 }
 
