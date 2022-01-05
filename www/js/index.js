@@ -27,6 +27,9 @@ function get_genres(){
 
 function get_4_artists_by_genreId(genreId, round) {
     round++
+    if (round> 1){
+      app.dialog.close()
+    }
     if(round > 2){
       var score = calculateResult(results)
       results = []
@@ -123,26 +126,22 @@ async function get_tracklist_by_artist(artistId){
 function checkAnswer(genreId, round, countdown){
   var answers = document.getElementsByClassName("answer")
   for(var i=0; i<answers.length; i++){
+    let title = ''
+    let color = ''
     answers[i].addEventListener("click", function(){
       clearTimeout(countdown)
       if(this.classList.contains("goodAnswer")) {
-        goodAnswer()
+        app.dialog.alert('', 'Bien joué !')
         let music = document.querySelector(".music")
         addResult(music.currentTime)
       } else {
-        wrongAnswer()
+        app.dialog.alert('', 'Mauvaise réponse !')
       }
+
       setTimeout(nextQuestion, 2000, genreId, round)
+
     })
   }
-}
-
-function goodAnswer(){
-  console.log('bravo')
-}
-
-function wrongAnswer(){
-  console.log('wrong')
 }
 
 function nextQuestion(genreId, round){
