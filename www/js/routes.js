@@ -26,9 +26,15 @@ var routes = [
         var router = this;
         var app = router.app; // important pour utiliser les components dans les routes
         var genreId = page.route.params.id; // function que j'ai créee dans un fichier index.js
-        get_4_artists_by_genreId(genreId);
+        var round = 0;
+
+        get_4_artists_by_genreId(genreId, round);
       },
     }
+  },
+  {
+    path: '/result/',
+    url: './pages/result.html',
   },
   {
     path: '/about/',
